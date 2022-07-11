@@ -5,17 +5,17 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-link active" aria-current="page" (click)="onSelect('recipe')">Recipes</a>
-        <a class="nav-link" (click)="onSelect('shopping-list')">Shopping list</a>
-      </div>
+      <ul class="nav navbar-nav">
+        <li routerLinkActive="active"><a routerLink="/recipes">Recipes</a></li>
+        <li routerLinkActive="active"><a routerLink="/shopping-list">Shopping list</a></li>
+      </ul>
     </div>
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown" appDropdown #r="appDropdown">
-        <a href="#" class="dropdown-toggle" role="button">Manage<span class="caret"></span></a>
+        <a style="cursor: pointer" class="dropdown-toggle" role="button">Manage<span class="caret"></span></a>
         <ul class="dropdown-menu" [ngClass]="{'show':r.isOpen}">
-          <li><a>Save Data</a></li>
-          <li><a>Fetch Data</a></li>
+          <li><a style="cursor: pointer">Save Data</a></li>
+          <li><a style="cursor: pointer">Fetch Data</a></li>
         </ul>
       </li>
     </ul>
