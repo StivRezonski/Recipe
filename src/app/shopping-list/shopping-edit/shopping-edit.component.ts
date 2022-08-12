@@ -16,7 +16,7 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   editMode = false;
   editedItemIndex: number;
-  editedIdem: Ingredient;
+  editedItem: Ingredient;
 
   constructor(private shoppingService: ShoppingListService) { }
 
@@ -25,10 +25,10 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
       (index: number) => {
         this.editedItemIndex = index;
         this.editMode = true;
-        this.editedIdem = this.shoppingService.getIngredient(index);
+        this.editedItem = this.shoppingService.getIngredient(index);
         this.shoppingListForm.setValue({
-          name: this.editedIdem.name,
-          amount: this.editedIdem.amount
+          name: this.editedItem.name,
+          amount: this.editedItem.amount
           }
         )
       }
@@ -36,7 +36,7 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(form: NgForm) {
-    const value = form.value
+    const value = form.value;
     const newIngredient = new Ingredient(value.name, value.amount);
     if(this.editMode) {
       this.shoppingService.updateIngredient(this.editedItemIndex, newIngredient);
